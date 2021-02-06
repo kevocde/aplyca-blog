@@ -13,6 +13,12 @@ services:
         volumes:
             - ./:/app
             - ./docker/nginx:/etc/nginx/conf.d
+    node:
+        image: node:slim
+        tty: true
+        working_dir: /app
+        volumes:
+            - ./:/app
     db:
         image: postgres:latest
         restart: on-failure

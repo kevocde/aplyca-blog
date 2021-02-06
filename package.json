@@ -1,0 +1,26 @@
+{
+  "name": "aplyca_blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevocde/aplyca-blog.git"
+  },
+  "author": "kevocde",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevocde/aplyca-blog/issues"
+  },
+  "homepage": "https://github.com/kevocde/aplyca-blog#readme",
+  "dependencies": {
+    "@symfony/webpack-encore": "^1.0.4",
+    "vuejs": "^3.0.1"
+  }
+}
