@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>Aplyca Blog - {% block title %}Principal{% endblock %}</title>
         {% block stylesheets %}
             <!-- Favicon -->
             <link href="{{ asset('argon-dashboard-master/assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
@@ -20,7 +20,43 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {#  Navbar  #}
+        <header>
+            <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-primary">
+                <div class="container">
+                    <a class="navbar-brand" href="{{ path('home') }}">Aplyca Blog</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-default">
+                        <div class="navbar-collapse-header">
+                            <div class="row">
+                                <div class="col-6 collapse-close">
+                                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span></span>
+                                        <span></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="navbar-nav ml-lg-auto">
+                            {% block navbaritems %}
+                                <li class="nav-item"><a class="nav-link active" href="{{ path('home') }}">Principal <span class="sr-only">(current)</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ path('post_index') }}">Blog</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                            {% endblock %}
+                            <li class="nav-item d-flex justify-content-center align-items-center"><a href="#" class="btn btn-success">Entrar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            {% block breadcrumbs %}{% endblock %}
+        </header>
+        <main class="pt-2">
+            <div class="container">
+                {% block body %}{% endblock %}
+            </div>
+        </main>
 
         {% block javascripts %}
             <!-- Core -->
