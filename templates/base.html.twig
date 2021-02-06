@@ -1,13 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <!-- Favicon -->
+            <link href="{{ asset('argon-dashboard-master/assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
 
-        {% block javascripts %}{% endblock %}
+            <!-- Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+            <!-- Icons -->
+            <link href="{{ asset('argon-dashboard-master/assets/vendor/nucleo/css/nucleo.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('argon-dashboard-master/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+
+            <!-- Argon CSS -->
+            <link type="text/css" href="{{ asset('argon-dashboard-master/assets/css/argon.min.css') }}" rel="stylesheet">
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        {% block javascripts %}
+            <!-- Core -->
+            <script src="{{ asset('argon-dashboard-master/assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('argon-dashboard-master/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+
+            <!-- Argon JS -->
+            <script src="{{ asset('argon-dashboard-master/assets/js/argon.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
