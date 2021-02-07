@@ -1,4 +1,22 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                {{ form_widget(form.name, {'attr': {'placeholder': 'Nombre'}}) }}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                {{ form_widget(form.email, {'attr': {'placeholder': 'Correo'}}) }}
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                {{ form_widget(form.message, {'attr': {'placeholder': 'Mensaje'}}) }}
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <button class="btn btn-success">{{ button_label|default('Almacenar') }}</button>
+        </div>
+    </div>
 {{ form_end(form) }}

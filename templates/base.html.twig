@@ -52,8 +52,9 @@
             </nav>
             {% block breadcrumbs %}{% endblock %}
         </header>
-        <main class="pt-2">
+        <main class="pt-4">
             <div class="container">
+                {% include('components/_alerts.html.twig') %}
                 {% block body %}{% endblock %}
             </div>
         </main>
