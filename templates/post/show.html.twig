@@ -2,6 +2,12 @@
 
 {% block title %}Entrada {{ post.title }}{% endblock %}
 
+{% block navbaritems %}
+    <li class="nav-item"><a class="nav-link" href="{{ path('home') }}">Principal <span class="sr-only">(current)</span></a></li>
+    <li class="nav-item"><a class="nav-link active" href="{{ path('post_index') }}">Blog</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ path('contact_new') }}">Contacto</a></li>
+{% endblock %}
+
 {% block body %}
     <div class="row justify-content-center">
         <div class="col-8">
