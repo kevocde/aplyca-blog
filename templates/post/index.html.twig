@@ -16,13 +16,13 @@
         {% for post in posts %}
             <div class="col-4">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ asset('argon-dashboard-master/assets/img/theme/img-1-1000x600.jpg') }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ post.image }}" alt="Card image cap">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col"><h3 class="mb-0">{{ post.title }}</h3></div>
-                            <div class="col d-flex">
+                            <div class="col"><h3 class="mb-2">{{ post.title }}</h3></div>
+                            <div class="col d-flex justify-content-end">
                                 <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-sm btn-primary mr-1">Editar</a>
-                                <form action="{{ path('post_delete', {'id': 1}) }}" id="frm-delete-post{{ post.id }}" class="d-none" onsubmit="return confirm('¿Está seguro de eliminar esta entrada?');">
+                                <form action="{{ path('post_delete', {'id': 1}) }}" method="post" id="frm-delete-post{{ post.id }}" class="d-none" onsubmit="return confirm('¿Está seguro de eliminar esta entrada?');">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
                                 </form>

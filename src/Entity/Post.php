@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -88,7 +89,8 @@ class Post
 
     public function setSlug(string $slug): self
     {
-        $this->slug = $slug;
+        $this->slug = str_split(mb_strtolower(str_replace(' ', '-', $slug)), 20);
+        $this->slug = reset($this->slug);
 
         return $this;
     }
@@ -129,36 +131,36 @@ class Post
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $created_at): self
+    public function setCreatedAt(?DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    public function setUpdatedAt(?DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
 
         return $this;
     }
 
-    public function getDeletedAt(): ?\DateTimeInterface
+    public function getDeletedAt(): ?DateTimeInterface
     {
         return $this->deleted_at;
     }
 
-    public function setDeletedAt(?\DateTimeInterface $deleted_at): self
+    public function setDeletedAt(?DateTimeInterface $deleted_at): self
     {
         $this->deleted_at = $deleted_at;
 

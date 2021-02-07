@@ -1,11 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Post{% endblock %}
+{% block title %}Crear Entrada{% endblock %}
+
+{% block navbaritems %}
+    <li class="nav-item"><a class="nav-link" href="{{ path('home') }}">Principal <span class="sr-only">(current)</span></a></li>
+    <li class="nav-item"><a class="nav-link active" href="{{ path('post_index') }}">Blog</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ path('contact_new') }}">Contacto</a></li>
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Post</h1>
-
-    {{ include('post/_form.html.twig') }}
-
-    <a href="{{ path('post_index') }}">back to list</a>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h2 class="mb-0 text-center">Crear nueva entrada</h2>
+                </div>
+                <div class="card-body">
+                    {{ include('post/_form.html.twig', {'button_label': 'Crear'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
