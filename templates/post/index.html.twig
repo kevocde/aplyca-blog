@@ -20,8 +20,8 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col"><h3 class="mb-0">{{ post.title }}</h3></div>
-                            <div class="col d-flex justify-content-end">
-                                <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-sm btn-primary">Editar</a>
+                            <div class="col d-flex">
+                                <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-sm btn-primary mr-1">Editar</a>
                                 <form action="{{ path('post_delete', {'id': 1}) }}" id="frm-delete-post{{ post.id }}" class="d-none" onsubmit="return confirm('¿Está seguro de eliminar esta entrada?');">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
