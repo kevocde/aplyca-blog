@@ -1,49 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post index{% endblock %}
+{% block title %}Blog{% endblock %}
+
+{% block navbaritems %}
+    <li class="nav-item"><a class="nav-link" href="{{ path('home') }}">Principal <span class="sr-only">(current)</span></a></li>
+    <li class="nav-item"><a class="nav-link active" href="{{ path('post_index') }}">Blog</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ path('contact_new') }}">Contacto</a></li>
+{% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Author_id</th>
-                <th>Slug</th>
-                <th>Title</th>
-                <th>Image</th>
-                <th>Content</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>Deleted_at</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{{ path('post_new') }}" class="btn btn-success">Nuevo</a>
+        </div>
         {% for post in posts %}
-            <tr>
-                <td>{{ post.id }}</td>
-                <td>{{ post.authorId }}</td>
-                <td>{{ post.slug }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.image }}</td>
-                <td>{{ post.content }}</td>
-                <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ post.deletedAt ? post.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('post_show', {'id': post.id}) }}">show</a>
-                    <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ asset('argon-dashboard-master/assets/img/theme/img-1-1000x600.jpg') }}" alt="Card image cap">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col"><h3 class="mb-0">{{ post.title }}</h3></div>
+                            <div class="col d-flex justify-content-end">
+                                <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-sm btn-primary">Editar</a>
+                                <form action="{{ path('post_delete', {'id': 1}) }}" id="frm-delete-post{{ post.id }}" class="d-none" onsubmit="return confirm('¿Está seguro de eliminar esta entrada?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+                                </form>
+                                <button type="submit" form="frm-delete-post{{ post.id }}" class="btn btn-sm btn-danger">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <p class="card-text">{{ post.content }}</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ path('post_show', {'id': post.id}) }}" class="btn btn-outline-info">Ver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('post_new') }}">Create new</a>
+    </div>
 {% endblock %}
