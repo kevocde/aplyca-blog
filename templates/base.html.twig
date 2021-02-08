@@ -45,7 +45,13 @@
                                 <li class="nav-item"><a class="nav-link" href="{{ path('post_index') }}">Blog</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ path('contact_new') }}">Contacto</a></li>
                             {% endblock %}
-                            <li class="nav-item d-flex justify-content-center align-items-center"><a href="#" class="btn btn-success">Entrar</a></li>
+                            <li class="nav-item d-flex justify-content-center align-items-center">
+                                {% if app.user %}
+                                    <a href="{{ path('app_logout') }}" class="btn btn-success">Salir</a>
+                                {% else %}
+                                    <a href="{{ path('app_login') }}" class="btn btn-success">Entrar</a>
+                                {% endif %}
+                            </li>
                         </ul>
                     </div>
                 </div>

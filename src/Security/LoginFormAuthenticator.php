@@ -4,6 +4,7 @@ namespace App\Security;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -84,23 +85,32 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     * @param $credentials
+     * @return string|null
      */
     public function getPassword($credentials): ?string
     {
         return $credentials['password'];
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
+    /**
+     * @param Request $request
+     * @param TokenInterface $token
+     * @param string $providerKey
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): RedirectResponse
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        throw new Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
-    protected function getLoginUrl()
+    protected function getLoginUrl(): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
