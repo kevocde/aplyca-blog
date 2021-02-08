@@ -14,7 +14,6 @@
             <div class="card">
                 <div class="card-header border-0"><h2 class="mb-2 text-center">Inicie sesión</h2></div>
                 <div class="card-body">
-
                     <form method="post">
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         <div class="row">
@@ -46,8 +45,12 @@
                                 <button class="btn btn-lg btn-success" type="submit">Iniciar</button>
                             </div>
                         </div>
-
                     </form>
+                    <div class="row">
+                        <div class="col-12 text-center pt-4">
+                            <a href="{{ path('app_register') }}">¿No está registrado?, registrese aquí</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
