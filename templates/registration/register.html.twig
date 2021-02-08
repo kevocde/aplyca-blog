@@ -1,21 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Registro{% endblock %}
+
+{% block navbaritems %}
+    <li class="nav-item"><a class="nav-link" href="{{ path('home') }}">Principal <span class="sr-only">(current)</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ path('post_index') }}">Blog</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ path('contact_new') }}">Contacto</a></li>
+{% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="row">
+        <div class="col-12 justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    {% for flashError in app.flashes('verify_email_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                    {% endfor %}
+                    <div class="card-header border-0">
+                        <h2 class="mb-0 text-center">Registro</h2>
+                    </div>
+                    {{ form_start(registrationForm) }}
+                    <div class="row">
+                        <div class="col-12">
+                            {{ form_row(registrationForm.email, {
+                                label: 'Correo'
+                            }) }}
+                        </div>
+                        <div class="col-12">
+                            {{ form_row(registrationForm.plainPassword, {
+                                label: 'Contraseña'
+                            }) }}
+                        </div>
+                        <div class="col-12">
+                            {{ form_row(registrationForm.agreeTerms, {'label': 'Aceptar términos y condiciones'}) }}
+                        </div>
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+                    </div>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
