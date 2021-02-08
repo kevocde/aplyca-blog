@@ -43,10 +43,8 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $author = $this->getDoctrine()->getRepository(User::class)->find(1);
-
             $post->setSlug($post->getTitle());
-            $post->setAuthor($author);
+            $post->setAuthor($this->getUser());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);

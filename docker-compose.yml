@@ -20,15 +20,15 @@ services:
         volumes:
             - ./:/app
     db:
-        image: postgres:latest
+        image: mariadb:latest
         restart: on-failure
         environment:
-            POSTGRES_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: secret
         ports:
-            - 5432:5432
+            - 3306:3306
         expose:
             - 5432
         volumes:
-            - db:/var/lib/postgresql/data
+            - db:/var/lib/mysql
 volumes:
     db:
