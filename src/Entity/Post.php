@@ -89,7 +89,7 @@ class Post
 
     public function setSlug(string $slug): self
     {
-        $this->slug = str_split(mb_strtolower(str_replace(' ', '-', $slug)), 20);
+        $this->slug = mb_str_split(mb_strtolower(str_replace(' ', '-', $slug)), 5);
         $this->slug = reset($this->slug);
 
         return $this;
