@@ -20,15 +20,14 @@ services:
         volumes:
             - ./:/app
     db:
-        image: mariadb:latest
+        build: ./docker/postgresql
         restart: on-failure
         environment:
-            MYSQL_ROOT_PASSWORD: secret
+            POSTGRES_PASSWORD: secret
         ports:
-            - 3306:3306
-        expose:
-            - 5432
+            - 5432:5432
         volumes:
-            - db:/var/lib/mysql
+            - db:/var/lib/postgresql/data
+
 volumes:
     db:
