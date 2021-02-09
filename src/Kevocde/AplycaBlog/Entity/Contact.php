@@ -35,6 +35,27 @@ class Contact
     private $message;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param $phone
+     */
+    public function setPhone($phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
