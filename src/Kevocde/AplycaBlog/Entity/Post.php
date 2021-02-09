@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace App\Kevocde\AplycaBlog\Entity;
 
-use App\Repository\PostRepository;
+use App\Entity\User;
+use App\Kevocde\AplycaBlog\Repository\PostRepository;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 

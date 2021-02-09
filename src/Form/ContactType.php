@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Contact;
+use App\Kevocde\AplycaBlog\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

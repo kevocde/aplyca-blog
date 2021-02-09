@@ -2,7 +2,7 @@
 
 namespace App\Kevocde\AplycaBlog\Controller;
 
-use App\Entity\Contact;
+use App\Kevocde\AplycaBlog\Entity\Contact;
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
