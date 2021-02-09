@@ -3,7 +3,7 @@
 namespace App\Kevocde\AplycaBlog\Controller;
 
 use App\Kevocde\AplycaBlog\Entity\Post;
-use App\Form\PostType;
+use App\Kevocde\AplycaBlog\Form\PostType;
 use App\Kevocde\AplycaBlog\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
