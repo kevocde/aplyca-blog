@@ -26,7 +26,7 @@
                                 {% if app.user and app.user.id == post.author.id %}
                                     <div class="col d-flex justify-content-end">
                                         <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-sm btn-primary mr-1">Editar</a>
-                                        <form action="{{ path('post_delete', {'id': 1}) }}" method="post" id="frm-delete-post{{ post.id }}" class="d-none" onsubmit="return confirm('¿Está seguro de eliminar esta entrada?');">
+                                        <form action="{{ path('post_delete', {'id': post.id}) }}" method="post" id="frm-delete-post{{ post.id }}" class="d-none" onsubmit="return confirm('¿Está seguro de eliminar esta entrada?');">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
                                         </form>
