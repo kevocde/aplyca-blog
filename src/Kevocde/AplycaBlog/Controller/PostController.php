@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Kevocde\AplycaBlog\Controller;
 
 use App\Entity\Post;
-use App\Entity\User;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
