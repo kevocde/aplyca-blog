@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Kevocde\AplycaBlog\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
@@ -35,7 +35,7 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_new');
         }
 
-        return $this->render('contact/new.html.twig', [
+        return $this->render('@AplycaBlog/contact/new.html.twig', [
             'contact' => $contact,
             'form' => $form->createView(),
         ]);
