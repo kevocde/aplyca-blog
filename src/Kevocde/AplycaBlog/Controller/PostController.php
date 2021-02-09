@@ -25,9 +25,14 @@ class PostController extends AbstractController
      */
     public function index(PostRepository $postRepository): Response
     {
-        return $this->render('@AplycaBlog/post/index.html.twig', [
-            'posts' => $postRepository->findAll(),
-        ]);
+
+        if ($this->getUser()) {
+            $posts = $postRepository->findBy(['author_id' => $this->getUser()->getId()]);
+        } else {
+            $posts = $postRepository->findAll();
+
+        }
+        return $this->render('@AplycaBlog/post/index.html.twig', compact('posts'));
     }
 
     /**
